@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>IFE-JS-task05</title>
+<style>
+#numList {
+	height: 200px;
+	margin: 20px;
+}
+li {
+	font-size: 0;
+	list-style-type: none;
+	display: inline-block;
+	margin-left: 2px;
+	vertical-align: bottom;
+	width: 20px;
+	background: #FF8C69;
+}
+</style> 
+</head>
+
+<body>
+	<input id="num" type="text" />
+	<button id="leftIn" type="button">左侧入</button>
+	<button id="rightIn" type="button">右侧入</button>
+	&nbsp;&nbsp;
+	<button id="leftOut" type="button">左侧出</button>
+	<button id="rightOut" type="button">右侧出</button>
+	<ul  id="numList">
+		<!-- 初始数据 -->
+		<li>12</li>
+		<li>23</li>
+		<li>13</li>
+		<li>45</li>
+		<li>56</li>
+		<li>46</li>
+		<li>78</li>
+		<li>89</li>
+		<li>79</li>
+		<li>58</li>
+	</ul>
+	<button id="sort">排序</button>
+	<script>
+		var leftIn = document.getElementById("leftIn"),
+		   rightIn = document.getElementById("rightIn"),
+		   leftOut = document.getElementById("leftOut"),
+		  rightOut = document.getElementById("rightOut"),
+		  	   num = document.getElementById("num"),
+		   numList = document.getElementById("numList")
+
+	</script>
+</body>
+</html>
