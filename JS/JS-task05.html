@@ -47,7 +47,52 @@ li {
 		   leftOut = document.getElementById("leftOut"),
 		  rightOut = document.getElementById("rightOut"),
 		  	   num = document.getElementById("num"),
-		   numList = document.getElementById("numList")
+		   numList = document.getElementById("numList"),
+		      sort = document.getElementById("sort")
+
+		//左侧入
+		function insertNum() {
+			var addlis = document.createElement("li")
+			addlis.style.height = num.value + "px"
+			addlis.innerHTML = num.value
+			numList.insertBefore(addlis,numList.firstChild)
+			num.value = ""
+		}
+		//右侧入
+		function appendNum() {
+			var addlis = document.createElement("li")
+			addlis.style.height = num.value + "px"
+			addlis.innerHTML = num.value
+			numList.appendChild(addlis)
+			num.value = ""
+		}
+
+		function removeItem(item) {
+			numList.removeChild(item)
+		}
+		//左侧出
+		function removeLeft() {
+			numList.firstChild.remove()
+		}
+		//右侧出
+		function removeRight() {
+			numList.lastChild.remove()
+		}
+		//点击删除
+		function clickRemove() {
+			var nums = document.querySelectorAll("#numList li")
+			nums.forEach(function(num) {
+				num.onclick = function() {
+					removeItem(this)
+				}
+			})
+		}
+		clickRemove()
+
+		leftIn.addEventListener("click", insertNum)
+		rightIn.addEventListener("click", appendNum)
+		leftOut.addEventListener("click",removeLeft)
+		rightOut.addEventListener("click",removeRight)
 
 	</script>
 </body>
