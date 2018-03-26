@@ -52,19 +52,23 @@ li {
 
 		//左侧入
 		function insertNum() {
-			var addlis = document.createElement("li")
-			addlis.style.height = num.value + "px"
-			addlis.innerHTML = num.value
-			numList.insertBefore(addlis,numList.firstChild)
-			num.value = ""
+			if (validNum()) {
+				var addlis = document.createElement("li")
+				addlis.style.height = num.value + "px"
+				addlis.innerHTML = num.value
+				numList.insertBefore(addlis,numList.firstChild)
+				num.value = ""
+			}
 		}
 		//右侧入
 		function appendNum() {
-			var addlis = document.createElement("li")
-			addlis.style.height = num.value + "px"
-			addlis.innerHTML = num.value
-			numList.appendChild(addlis)
-			num.value = ""
+			if (validNum()) {
+				var addlis = document.createElement("li")
+				addlis.style.height = num.value + "px"
+				addlis.innerHTML = num.value
+				numList.appendChild(addlis)
+				num.value = ""
+			}
 		}
 
 		function removeItem(item) {
@@ -78,21 +82,61 @@ li {
 		function removeRight() {
 			numList.lastChild.remove()
 		}
+
 		//点击删除
 		function clickRemove() {
-			var nums = document.querySelectorAll("#numList li")
+			var nums = numList.querySelectorAll("li")
 			nums.forEach(function(num) {
 				num.onclick = function() {
 					removeItem(this)
 				}
 			})
 		}
-		clickRemove()
+		//限制输入的数字在10-100之间
+		function validNum() {
+			if (num.value >= 10 && num.value <= 100) {
+				return num.value
+			} else {
+				alert("请输入10-100之间的数字")
+			}
+		}
+		//限制队列元素数量不超过60个
+		function clickListener(btn) {
+			var lis = numList.querySelectorAll("li")
+			btn.addEventListener("click", function() {
+				switch (btn) {
+					case leftIn
+					//队列元素数量不超过60个
+					if (lis.length < 60) {
+						insertNum()
+					} else {
+						alert("数字数量已达上限")
+					}
+					clickRemove()
+					break
+					case rightIn
+					if (lis.length < 60) {
+						appendNum()
+					} else {
+						alert("数字数量已达上限")
+					}
+					clickRemove()
+					break
+					case leftOut
+					removeLeft()
+					break
+					case rightOut
+					removeRight()
+					break
+				}                                                               
+			})
+		}	
+		
 
-		leftIn.addEventListener("click", insertNum)
+		/*leftIn.addEventListener("click", insertNum)
 		rightIn.addEventListener("click", appendNum)
 		leftOut.addEventListener("click",removeLeft)
-		rightOut.addEventListener("click",removeRight)
+		rightOut.addEventListener("click",removeRight)*/
 
 	</script>
 </body>
