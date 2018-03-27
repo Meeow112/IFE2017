@@ -14,7 +14,7 @@ li {
 	display: inline-block;
 	margin-left: 2px;
 	vertical-align: bottom;
-	width: 20px;
+	width: 10px;
 	background: #FF8C69;
 }
 </style> 
@@ -48,26 +48,42 @@ li {
 		  rightOut = document.getElementById("rightOut"),
 		  	   num = document.getElementById("num"),
 		   numList = document.getElementById("numList"),
-		      sort = document.getElementById("sort")
+		      sort = document.getElementById("sort"),
+		      nums = numList.querySelectorAll("li")
 
+		//给初始数据添加样式
+		function initialData() {
+			/*for (var i = 0; i < numList.length; i++) {
+				li.style.height = nums[i].textContent + "px"
+			}*/
+			nums.forEach(function(li) {
+				li.style.height = li.textContent
+			})
+		}
+		initialData()
+		
 		//左侧入
 		function insertNum() {
 			if (validNum()) {
-				var addlis = document.createElement("li")
-				addlis.style.height = num.value + "px"
-				addlis.innerHTML = num.value
-				numList.insertBefore(addlis,numList.firstChild)
-				num.value = ""
+				if (limitedQueue()) {
+					var addlis = document.createElement("li")
+					addlis.style.height = num.value + "px"
+					addlis.innerHTML = num.value
+					numList.insertBefore(addlis,numList.firstChild)
+					num.value = ""
+				}
 			}
 		}
 		//右侧入
 		function appendNum() {
 			if (validNum()) {
-				var addlis = document.createElement("li")
-				addlis.style.height = num.value + "px"
-				addlis.innerHTML = num.value
-				numList.appendChild(addlis)
-				num.value = ""
+				if (limitedQueue()) {
+					var addlis = document.createElement("li")
+					addlis.style.height = num.value + "px"
+					addlis.innerHTML = num.value
+					numList.appendChild(addlis)
+					num.value = ""
+				}				
 			}
 		}
 
@@ -82,62 +98,39 @@ li {
 		function removeRight() {
 			numList.lastChild.remove()
 		}
-
 		//点击删除
-		function clickRemove() {
-			var nums = numList.querySelectorAll("li")
+		function clickRemove() {			
 			nums.forEach(function(num) {
 				num.onclick = function() {
+					alert(this)
 					removeItem(this)
 				}
 			})
 		}
+		clickRemove()
 		//限制输入的数字在10-100之间
 		function validNum() {
 			if (num.value >= 10 && num.value <= 100) {
 				return num.value
 			} else {
+				num.value = ""
 				alert("请输入10-100之间的数字")
 			}
 		}
-		//限制队列元素数量不超过60个
-		function clickListener(btn) {
-			var lis = numList.querySelectorAll("li")
-			btn.addEventListener("click", function() {
-				switch (btn) {
-					case leftIn
-					//队列元素数量不超过60个
-					if (lis.length < 60) {
-						insertNum()
-					} else {
-						alert("数字数量已达上限")
-					}
-					clickRemove()
-					break
-					case rightIn
-					if (lis.length < 60) {
-						appendNum()
-					} else {
-						alert("数字数量已达上限")
-					}
-					clickRemove()
-					break
-					case leftOut
-					removeLeft()
-					break
-					case rightOut
-					removeRight()
-					break
-				}                                                               
-			})
-		}	
-		
+		//限制队列的元素数量不超过60个
+		function limitedQueue() {			
+			if (nums.length < 60) {
+				return num.value
+			} else {
+				num.value = ""
+				alert("已达队列元素数量上限")
+			}
+		}
 
-		/*leftIn.addEventListener("click", insertNum)
+		leftIn.addEventListener("click", insertNum)
 		rightIn.addEventListener("click", appendNum)
 		leftOut.addEventListener("click",removeLeft)
-		rightOut.addEventListener("click",removeRight)*/
-
+		rightOut.addEventListener("click",removeRight)
 	</script>
 </body>
 </html>
