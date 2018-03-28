@@ -53,11 +53,8 @@ li {
 
 		//给初始数据添加样式
 		function initialData() {
-			/*for (var i = 0; i < numList.length; i++) {
-				li.style.height = nums[i].textContent + "px"
-			}*/
 			nums.forEach(function(li) {
-				li.style.height = li.textContent
+				li.style.height = li.textContent + "px"
 			})
 		}
 		initialData()
@@ -86,10 +83,6 @@ li {
 				}				
 			}
 		}
-
-		function removeItem(item) {
-			numList.removeChild(item)
-		}
 		//左侧出
 		function removeLeft() {
 			numList.firstChild.remove()
@@ -99,15 +92,10 @@ li {
 			numList.lastChild.remove()
 		}
 		//点击删除
-		function clickRemove() {			
-			nums.forEach(function(num) {
-				num.onclick = function() {
-					alert(this)
-					removeItem(this)
-				}
-			})
+		function clickRemove(e) {	
+			var e = e || event		
+			numList.removeChild(e.target)
 		}
-		clickRemove()
 		//限制输入的数字在10-100之间
 		function validNum() {
 			if (num.value >= 10 && num.value <= 100) {
@@ -131,6 +119,7 @@ li {
 		rightIn.addEventListener("click", appendNum)
 		leftOut.addEventListener("click",removeLeft)
 		rightOut.addEventListener("click",removeRight)
+		numList.addEventListener("click", clickRemove)
 	</script>
 </body>
 </html>
