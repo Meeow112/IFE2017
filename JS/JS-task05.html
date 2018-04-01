@@ -41,6 +41,7 @@ li {
 		<li>58</li>
 	</ul>
 	<button id="sort">排序</button>
+	<ul id="resort"></ul>
 	<script>
 		var leftIn = document.getElementById("leftIn"),
 		   rightIn = document.getElementById("rightIn"),
@@ -48,8 +49,10 @@ li {
 		  rightOut = document.getElementById("rightOut"),
 		  	   num = document.getElementById("num"),
 		   numList = document.getElementById("numList"),
+		   resort = document.getElementById("resort"),
 		      sort = document.getElementById("sort"),
-		      nums = numList.querySelectorAll("li")
+		      nums = numList.querySelectorAll("li"),
+		      resortList = numList.querySelectorAll("li")
 
 		//给初始数据添加样式
 		function initialData() {
@@ -58,6 +61,13 @@ li {
 			})
 		}
 		initialData()
+		//给筛选后的数据添加样式
+		function resortData() {
+			resortList.forEach(function(li) {
+				li.style.height = li.textContent + "px"
+			})
+		}
+		resortData()
 		
 		//左侧入
 		function insertNum() {
@@ -116,7 +126,20 @@ li {
 		}
 		//排序
 		function bubbleSort() {
-			
+			var lis = numList.getElementsByTagName("li"),
+			lisData = []
+			for (var i = 0; i < lis.length; i ++) {
+				lisData.push(lis.innerHTML)
+			}
+			lisData.sort(function(a,b) {
+				return a[1] - b[1]
+			})
+			return lisData
+			for (var j = 0; j < lisData.length; j++) {
+				var li = document.createElement("li")
+				resort.append(li)
+				li.innerHTML = lisData[i]
+			}
 		}
 
 		leftIn.addEventListener("click", insertNum)
@@ -124,6 +147,7 @@ li {
 		leftOut.addEventListener("click",removeLeft)
 		rightOut.addEventListener("click",removeRight)
 		numList.addEventListener("click", clickRemove)
+		sort.addEventListener("click",bubbleSort)
 	</script>
 </body>
 </html>
