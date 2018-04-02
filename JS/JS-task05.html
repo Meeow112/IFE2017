@@ -17,6 +17,9 @@ li {
 	width: 10px;
 	background: #FF8C69;
 }
+#resort {
+	margin: 20px;
+}
 </style> 
 </head>
 
@@ -52,7 +55,7 @@ li {
 		   resort = document.getElementById("resort"),
 		      sort = document.getElementById("sort"),
 		      nums = numList.querySelectorAll("li"),
-		      resortList = numList.querySelectorAll("li")
+		     items = []
 
 		//给初始数据添加样式
 		function initialData() {
@@ -61,13 +64,6 @@ li {
 			})
 		}
 		initialData()
-		//给筛选后的数据添加样式
-		function resortData() {
-			resortList.forEach(function(li) {
-				li.style.height = li.textContent + "px"
-			})
-		}
-		resortData()
 		
 		//左侧入
 		function insertNum() {
@@ -124,8 +120,8 @@ li {
 				alert("已达队列元素数量上限")
 			}
 		}
-		//排序
-		function bubbleSort() {
+		
+		/*function bubbleSort() {
 			var lis = numList.getElementsByTagName("li"),
 			lisData = []
 			for (var i = 0; i < lis.length; i ++) {
@@ -140,6 +136,35 @@ li {
 				resort.append(li)
 				li.innerHTML = lisData[i]
 			}
+		}*/
+
+		//将排序好的数组渲染到队列中
+		function render() {
+			for (var i = 0; i < items.length; i++) {
+				var renderLis = document.createElement("li")
+				renderLis.style.height = items[i] + "px"
+				renderLis.innerHTML = items[i]
+				resort.appendChild(renderLis)
+			}
+		}
+
+		//排序并渲染
+		function bubbleSort() {
+			for (var k = 0; k < nums.length; k++) {
+				var item = nums[k].textContent
+				//nums 转化为数组
+				items.push(item) 
+			}
+			for (i = 0; i < items.length; i++) {
+				for (var j = 0; j < items.length - i; j++) {
+					if(items[j] > items[j+1]) {
+						var tmp = items[j]
+						items[j] = items[j+1]
+						items[j+1] =tmp
+					}
+				}
+			}
+			return render()
 		}
 
 		leftIn.addEventListener("click", insertNum)
