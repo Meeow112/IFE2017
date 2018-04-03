@@ -54,11 +54,11 @@ li {
 		   numList = document.getElementById("numList"),
 		   resort = document.getElementById("resort"),
 		      sort = document.getElementById("sort"),
-		      nums = numList.querySelectorAll("li"),
 		     items = []
 
 		//给初始数据添加样式
 		function initialData() {
+			var nums = numList.querySelectorAll("li")
 			nums.forEach(function(li) {
 				li.style.height = li.textContent + "px"
 			})
@@ -112,7 +112,8 @@ li {
 			}
 		}
 		//限制队列的元素数量不超过60个
-		function limitedQueue() {			
+		function limitedQueue() {	
+			var nums = numList.querySelectorAll("li")		
 			if (nums.length < 60) {
 				return num.value
 			} else {
@@ -150,6 +151,7 @@ li {
 
 		//排序并渲染
 		function bubbleSort() {
+			var nums = numList.querySelectorAll("li")
 			for (var k = 0; k < nums.length; k++) {
 				var item = nums[k].textContent
 				//nums 转化为数组
