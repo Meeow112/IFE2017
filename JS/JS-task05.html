@@ -52,7 +52,7 @@ li {
 		  rightOut = document.getElementById("rightOut"),
 		  	   num = document.getElementById("num"),
 		   numList = document.getElementById("numList"),
-		   resort = document.getElementById("resort"),
+		    resort = document.getElementById("resort"),
 		      sort = document.getElementById("sort"),
 		     items = []
 
@@ -148,25 +148,55 @@ li {
 				resort.appendChild(renderLis)
 			}
 		}
+		//再次排序前清空resort
+		function clearResort() {
+			var resortLis = resort.querySelectorAll("li")
+			for (var i = resortLis.length-1; i >= 0; i--) {
+				resort.removeChild(resortLis[i])
+			}
+		}
 
 		//排序并渲染
 		function bubbleSort() {
-			var nums = numList.querySelectorAll("li")
-			for (var k = 0; k < nums.length; k++) {
-				var item = nums[k].textContent
-				//nums 转化为数组
-				items.push(item) 
-			}
-			for (i = 0; i < items.length; i++) {
-				for (var j = 0; j < items.length - i; j++) {
-					if(items[j] > items[j+1]) {
-						var tmp = items[j]
-						items[j] = items[j+1]
-						items[j+1] =tmp
+			var resortLis = resort.querySelectorAll("li")
+			if (resortLis.length > 0) {
+				clearResort()
+				var nums = numList.querySelectorAll("li")
+				for (var k = 0; k < nums.length; k++) {
+					var item = nums[k].textContent
+					//nums 转化为数组
+					items.push(item) 
+				}
+				for (i = 0; i < items.length; i++) {
+					for (var j = 0; j < items.length - i; j++) {
+						if(items[j] > items[j+1]) {
+							var tmp = items[j]
+							items[j] = items[j+1]
+							items[j+1] =tmp
+						}
 					}
 				}
+				render()
+				items = []
+			} else {
+				var nums = numList.querySelectorAll("li")
+				for (var k = 0; k < nums.length; k++) {
+					var item = nums[k].textContent
+					//nums 转化为数组
+					items.push(item) 
+				}
+				for (i = 0; i < items.length; i++) {
+					for (var j = 0; j < items.length - i; j++) {
+						if(items[j] > items[j+1]) {
+							var tmp = items[j]
+							items[j] = items[j+1]
+							items[j+1] =tmp
+						}
+					}
+				}
+				render()
+				items = []
 			}
-			return render()
 		}
 
 		leftIn.addEventListener("click", insertNum)
