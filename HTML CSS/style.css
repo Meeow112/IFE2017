@@ -1,0 +1,283 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.header a {
+	text-decoration: none;
+}
+
+
+body {
+	background-color: #dfdfdf;
+	font-family: "Microsoft YaHei";
+}
+
+.header {
+	height: 60px;
+	background-color: #333;
+}	
+
+.logo {
+	width: 201px;
+	height: 61px;
+	float: left;
+	background: url(../img/logo.png) no-repeat center;
+}
+
+.menu {
+	float: right;
+	line-height: 60px;
+	margin-right: 10px;
+}
+
+.menu li {
+	float: left;
+	margin-right: 20px;
+	list-style-position: inside;
+}
+
+.menu li a {
+	color: #fefdff;
+}
+
+.menu li .active {
+	color: #585c5d;
+}
+
+h1 {
+	font-size: 21px;
+	margin-bottom: 20px;
+}
+
+h2 {
+	font-size: 16px;
+	margin-bottom: 20px;
+	color: #5f5e5a;
+}
+
+span {
+	font-size: 12px;
+	color: #807b7f;
+	margin-bottom: 20px;
+}
+
+p {
+	font-size: 16px;
+	line-height: 32px;
+}
+
+#annotations + p,
+img + p {
+	text-indent: 30px;
+}
+
+.main {
+	margin-right: 460px;
+}
+
+.main .chapter,
+	  .images {
+	background-color: #fff;
+	margin: 21px;
+	padding: 39px 27px 35px 19px;
+	box-shadow: 2px 2px 3px #848484;
+}
+
+.main .vote {
+	width: 400px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	background-color: #fff;
+	margin: 21px 41px 21px 21px;
+	padding: 39px 27px 35px 19px;
+	box-shadow: 2px 2px 3px #848484;
+}
+
+.chapter p a {
+	color: #0000e8;
+}
+
+.chapter img {
+	margin: 20px 0;
+}
+
+.chapter ul {
+	list-style-type: none;
+	margin-left: 30px;
+}
+
+.images {
+	list-style-type: none;
+	padding-left: 50px; 
+}
+
+.images h2 {
+	color: #00002e;
+}
+
+.images li {
+	width: 120px;
+	height: 124px;
+	border: solid 1px #cecece;
+	text-align: center;
+	padding-top: 6px;
+	margin-bottom: 15px;
+}
+
+.images li img {
+	width: 100px;
+	height: 81px;
+	margin-top: 5px;
+}
+
+.chapter ol {
+	margin-left: 43px;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+
+table {
+	width: 1196px;
+	height: 146px;
+	border: solid 1px #cdcdcd;
+}
+
+th {
+	color: #fffcee;
+	background-color: #333;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: left;
+	padding-left: 5px;
+}
+
+td {
+	padding-left: 5px;
+}
+
+.submit {
+	font-weight: bold;
+	background-color: #cdcdcd;
+}
+
+.vote h2 {
+	height: 38px;
+	color: #000600;
+	border-left: solid 3px #cfcfcf;
+	padding-top: 8px;
+	padding-left: 10px;
+}
+
+#sidebar {
+	margin-left: 268px;
+	max-width: 1000px;
+	font: 12px;
+}
+
+form div {
+	clear: left;
+	margin-bottom: 10px;
+}
+
+label {
+	display: block;
+	margin: 0px;
+	cursor: pointer;
+	float: left;
+	width: 10em;
+	text-align: right;
+	padding-right: 14px;
+}
+
+#gender .col,
+#favorite .col {
+	float: left;
+	clear: none;
+}
+
+#gender .col label,
+#favorite .col label {
+	float: none;
+	text-align: left;
+}
+
+#gender .col label {
+	width: 38px;
+}
+
+#favorite .col label {
+	width: 52px;
+}
+
+.tips {
+	text-align: left;
+	text-indent: -1000px;
+	cursor: default;
+}
+
+#notes {
+	color: #87939f;
+	margin-bottom: 21px;
+}
+
+#male {
+	background: url('../img/spot.png') no-repeat center;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	width: 17px;
+	height: 16px;
+}
+
+#city select {
+	border-radius: 3px;
+	background: url('../img/arrow.png') no-repeat right;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	text-indent: 0.01px;
+	text-overflow: ;
+	width: 50px;
+	height: 19px;
+	line-height: 12px;
+}
+
+.col {
+	float: none;
+}
+
+#text {
+	width: 762px;
+	height: 98px;
+}
+
+.btn {
+	width: 100%;
+	height: 38px;
+	background-color: #3355d0;
+	border-radius: 15px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #fffeea;
+	cursor: pointer;
+}
+
+.btn:hover {
+	background: #f30;
+}
+
+.foot {
+	height: 70px;
+	background-color: #000;
+	font-size: 12px;
+	color: #fff9de;
+	text-align: center;
+}
+
+.foot p {
+	display: inline-block;
+	position: relative;
+	margin-top: 18px;
+}
