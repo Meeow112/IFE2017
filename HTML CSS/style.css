@@ -72,6 +72,12 @@ img + p {
 	text-indent: 30px;
 }
 
+.wrap {
+	width: 90%;
+	margin: 0 auto;
+	position: relative;
+}
+
 .main {
 	margin-right: 460px;
 }
@@ -84,7 +90,7 @@ img + p {
 	box-shadow: 2px 2px 3px #848484;
 }
 
-.main .vote {
+.vote {
 	width: 400px;
 	position: absolute;
 	right: 0;
