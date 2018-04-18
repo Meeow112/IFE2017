@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JS-task06</title>
+<style>
+span {
+	background: #FF8C69;
+}
+</style> 
+</head>
+
+<body>
+	<textarea id="insert" rows="10" cols="30"></textarea>
+	<button id="leftIn" type="button">左侧入</button>
+	<button id="rightIn" type="button">右侧入</button>
+	<button id="leftOut" type="button">左侧出</button>
+	<button id="rightOut" type="button">右侧出</button>
+	<input id="search" type="text" />
+	<button id="search">搜索</button>
+	<div id="textlist"></div>
+
+	<script>
+		var leftIn = document.getElementById("leftIn"),
+		   rightIn = document.getElementById("rightIn"),
+		   leftOut = document.getElementById("leftOut"),
+		  rightOut = document.getElementById("rightOut"),
+		  	insert = document.getElementById("insert"),
+		  textlist = document.getElementById("textlist"),
+		    search = document.getElementById("search") 
+
+		//左侧入
+		function insertText() {
+					var addText = document.createElement("span")
+					addText.innerHTML = insert.value
+					textlist.insertBefore(addText,textlist.firstChild)
+					insert.value = ""
+		}
+		//右侧入
+		function appendText() {
+					var addText = document.createElement("span")
+					addText.innerHTML = insert.value
+					textlist.appendChild(addText)
+					insert.value = ""
+		}
+		//左侧出
+		function removeLeft() {
+			textlist.firstChild.remove()
+		}
+		//右侧出
+		function removeRight() {
+			textlist.lastChild.remove()
+		}
+		//点击删除
+		function clickRemove(e) {	
+			var e = e || event		
+			textlist.removeChild(e.target)
+		}   
+
+		//addEventListener事件区
+		leftIn.addEventListener("click", insertText)
+		rightIn.addEventListener("click", appendText)
+		leftOut.addEventListener("click",removeLeft)
+		rightOut.addEventListener("click",removeRight)
+		textlist.addEventListener("click", clickRemove)
+	</script>	
+</body>
+</html>
