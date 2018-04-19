@@ -57,6 +57,12 @@ span {
 			textlist.removeChild(e.target)
 		}   
 
+		//搜索
+		function searchWords() {
+			var keyword = search.value
+				    reg = new RegExp('^a-zA-Z0-9\u4e00-\u9fa5','\gi')
+		}
+
 		//addEventListener事件区
 		leftIn.addEventListener("click", insertText)
 		rightIn.addEventListener("click", appendText)
