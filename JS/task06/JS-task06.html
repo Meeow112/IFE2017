@@ -19,7 +19,7 @@ span {
 	<input id="search" type="text" />
 	<button id="search">搜索</button>
 	<div id="textlist"></div>
-
+	<button id="test">测试</button>
 	<script>
 		var leftIn = document.getElementById("leftIn"),
 		   rightIn = document.getElementById("rightIn"),
@@ -27,7 +27,31 @@ span {
 		  rightOut = document.getElementById("rightOut"),
 		  	insert = document.getElementById("insert"),
 		  textlist = document.getElementById("textlist"),
-		    search = document.getElementById("search") 
+		    search = document.getElementById("search"),
+		      test = document.getElementById("test")
+
+		//处理输入内容
+		function processText(value) {
+			 var reg = /[^a-zA-Z0-9\u4e00-\u9fa5]+/g;
+        	value = value.replace(reg, " ");
+        	var arr = [];
+        	arr = value.split(' ');
+        	return arr;
+		}
+		var getText = textlist.value
+		function teSt() {
+			alert processText(getText)
+		}
+		
+		test.addEventListener("click", teSt)
+
+		/*//创建节点
+		function createNode(value) {
+			var node = document.createElement("span")
+			node.innerText = value
+			node.addEventListener("click", removeNode)
+			return node
+		}
 
 		//左侧入
 		function insertText() {
@@ -69,7 +93,7 @@ span {
 		rightIn.addEventListener("click", appendText)
 		leftOut.addEventListener("click",removeLeft)
 		rightOut.addEventListener("click",removeRight)
-		textlist.addEventListener("click", clickRemove)
+		textlist.addEventListener("click", clickRemove)*/
 	</script>	
 </body>
 </html>
