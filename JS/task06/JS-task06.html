@@ -6,6 +6,7 @@
 <style>
 span {
 	background: #FF8C69;
+	margin: 5px;
 }
 </style> 
 </head>
@@ -32,20 +33,14 @@ span {
 
 		//处理输入内容
 		function processText(value) {
-			 var reg = /[^a-zA-Z0-9\u4e00-\u9fa5]+/g;
-        	value = value.replace(reg, " ");
-        	var arr = [];
-        	arr = value.split(' ');
-        	return arr;
+			var reg = /[^a-zA-Z0-9\u4e00-\u9fa5]+/g
+        	value = value.replace(reg, " ")
+        	var arr = []
+        	arr = value.split(' ')
+        	return arr
 		}
-		var getText = textlist.value
-		function teSt() {
-			alert processText(getText)
-		}
-		
-		test.addEventListener("click", teSt)
 
-		/*//创建节点
+		//创建节点
 		function createNode(value) {
 			var node = document.createElement("span")
 			node.innerText = value
@@ -55,17 +50,23 @@ span {
 
 		//左侧入
 		function insertText() {
-					var addText = document.createElement("span")
-					addText.innerHTML = insert.value
-					textlist.insertBefore(addText,textlist.firstChild)
-					insert.value = ""
+					var arr = processText(insert.value)
+					for (var i = 0; i < arr.length; i++) {
+						var addText = document.createElement("span")
+						addText.innerHTML = arr[i]
+						textlist.insertBefore(addText,textlist.firstChild)
+						insert.value = ""
+					}
 		}
 		//右侧入
 		function appendText() {
-					var addText = document.createElement("span")
-					addText.innerHTML = insert.value
-					textlist.appendChild(addText)
-					insert.value = ""
+					var arr = processText(insert.value)
+					for (var i = 0; i < arr.length; i++) {
+						var addText = document.createElement("span")
+						addText.innerHTML = insert.value
+						textlist.appendChild(addText)
+						insert.value = ""
+				}
 		}
 		//左侧出
 		function removeLeft() {
@@ -85,7 +86,7 @@ span {
 		function searchWords() {
 			var keyword = search.value
 				    reg = new RegExp('^a-zA-Z0-9\u4e00-\u9fa5','\g')
-			for (keyword)
+			
 		}
 
 		//addEventListener事件区
@@ -93,7 +94,7 @@ span {
 		rightIn.addEventListener("click", appendText)
 		leftOut.addEventListener("click",removeLeft)
 		rightOut.addEventListener("click",removeRight)
-		textlist.addEventListener("click", clickRemove)*/
+		textlist.addEventListener("click", clickRemove)
 	</script>	
 </body>
 </html>
