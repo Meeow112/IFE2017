@@ -8,6 +8,10 @@ span {
 	background: #FF8C69;
 	margin: 5px;
 }
+.key {
+	color: red;
+	background: yellow;
+}
 </style> 
 </head>
 
@@ -83,12 +87,21 @@ span {
 
 		//搜索
 		function searchWords() {
+			var crtList = textlist.querySelectorAll("span");
+
+			[].forEach.call(textlist.children, function(its){
+				its.className = its.className.replace("key", "")
+			})
 			var keyword = search.value
-			for (var i = 0; i < textlist.length; i++) {
-				var str = textlist[i].innerText
-				if (str.match(keyword)) {
-					textlist[i].style.background = "yellow"
+				    reg =keyword.replace(/[^a-zA-Z0-9\u4e00-\u9fa5].+/,"")
+			for (var i = 0; i < crtList.length; i++) {
+				var str = crtList[i].textContent
+				if (keyword != "") {
+					if (str.match(reg)) {
+						crtList[i].className = "key"
+					}
 				}
+				
 			}
 		}
 
