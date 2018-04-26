@@ -21,7 +21,7 @@ span {
 	<button id="rightIn" type="button">右侧入</button>
 	<button id="leftOut" type="button">左侧出</button>
 	<button id="rightOut" type="button">右侧出</button>
-	<input id="search" type="text" />
+	<input id="keyword" type="text" />
 	<button id="search">搜索</button>
 	<div id="textlist"></div>
 	<script>
@@ -32,7 +32,7 @@ span {
 		  	insert = document.getElementById("insert"),
 		  textlist = document.getElementById("textlist"),
 		    search = document.getElementById("search"),
-		      test = document.getElementById("test")
+		    keyword = document.getElementById("keyword")	
 
 		//处理输入内容
 		function processText(value) {
@@ -86,22 +86,36 @@ span {
 		}   
 
 		//搜索
-		function searchWords() {
-			var crtList = textlist.querySelectorAll("span");
+		//forEach方法
+		/*function searchWords() {
 
 			[].forEach.call(textlist.children, function(its){
 				its.className = its.className.replace("key", "")
 			})
-			var keyword = search.value
-				    reg =keyword.replace(/[^a-zA-Z0-9\u4e00-\u9fa5].+/,"")
-			for (var i = 0; i < crtList.length; i++) {
-				var str = crtList[i].textContent
-				if (keyword != "") {
+			var word = keyword.value,
+				    reg = word.replace(/[^a-zA-Z0-9\u4e00-\u9fa5].+/,"")
+			for (var i = 0; i < textlist.children.length; i++) {
+				var str = textlist.children[i].textContent
+
 					if (str.match(reg)) {
-						crtList[i].className = "key"
+						textlist.children[i].className = "key"
 					}
+
+			}
+		}*/
+		//循环法
+		function searchWords() {
+			var crtList = textlist.querySelectorAll("span")
+			for (var i = 0; i < crtList.length; i++) {
+				crtList[i].className = crtList[i].className.replace("key", "")
+			}
+			var word = keyword.value,
+				 reg = word.replace(/[^a-zA-Z0-9\u4e00-\u9fa5].+/,"")
+			for (var k = 0; k < crtList.length; k++) {
+				var str = crtList[k].textContent
+				if (str.match(reg)) {
+					crtList[k].className = "key"
 				}
-				
 			}
 		}
 
